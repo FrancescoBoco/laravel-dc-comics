@@ -22,7 +22,7 @@ Homepage
 
                 <div class="mb-3">
                     <label for="src" class="form-label">SRC</label>
-                    <input type="text" class="form-control @error('src') is-invalid @enderror" id="src" name="src" placeholder="src">
+                    <input value='{{ old('src') }}' type="text" class="form-control @error('src') is-invalid @enderror" id="src" name="src" placeholder="src">
                         @error('src')
                         <div class="alert alert-danger">
                         {{ $message }}
@@ -32,7 +32,7 @@ Homepage
 
                 <div class="mb-3">
                     <label for="title" class="form-label">title</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="title" required>
+                    <input value='{{ old('title') }}' type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="title" required>
                         @error('title')
                         <div class="alert alert-danger">
                         {{ $message }}
@@ -42,7 +42,7 @@ Homepage
 
                 <div class="mb-3">
                     <label for="series" class="form-label">series</label>
-                    <input type="text" class="form-control @error('series') is-invalid @enderror" id="series" name="series" placeholder="series" required>
+                    <input value='{{ old('series') }}' type="text" class="form-control @error('series') is-invalid @enderror" id="series" name="series" placeholder="series" required>
                         @error('series')
                             <div class="alert alert-danger">
                             {{ $message }}
@@ -52,7 +52,7 @@ Homepage
 
                 <div class="mb-3">
                     <label for="price" class="form-label">price</label>
-                    <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" placeholder="price" required>
+                    <input value='{{ old('price') }}' type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" placeholder="price" required>
                         @error('price')
                             <div class="alert alert-danger">
                             {{ $message }}
@@ -62,7 +62,7 @@ Homepage
 
                 <div class="mb-3">
                     <label for="sale_date" class="form-label">sale date</label>
-                    <input type="date" class="form-control @error('sale_date') is-invalid @enderror" id="sale_date" name="sale_date" placeholder="sale_date" required>
+                    <input value='{{ old('sale_date') }}' type="date" class="form-control @error('sale_date') is-invalid @enderror" id="sale_date" name="sale_date" placeholder="sale_date" required>
                         @error('sale_date')
                             <div class="alert alert-danger">
                             {{ $message }}

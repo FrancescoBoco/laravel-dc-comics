@@ -23,8 +23,14 @@ Homepage
 
                 <div class="mb-3">
                     <label for="src" class="form-label">SRC</label>
-                    <input type="text" class="form-control" id="src" name="src" placeholder="src" value="{{ $comic->src }}">
+                    <input type="text" class="form-control @error('src') is-invalid @enderror" id="src" name="src" placeholder="src" value="{{ $comic->src }}">
+                    @error('src')
+                         <div class="alert alert-danger">
+                            {{ $message }}
+                         </div>
+                     @enderror
                 </div>
+
 
                 <div class="mb-3">
                     <label for="title" class="form-labe">title</label>
@@ -39,19 +45,32 @@ Homepage
 
                 <div class="mb-3">
                     <label for="series" class="form-label">series</label>
-                    <input type="text" class="form-control" id="series" name="series" placeholder="series"  value="{{ $comic->series }}" required>
+                    <input type="text" class="form-control @error('src') is-invalid @enderror" id="series" name="series" placeholder="series"  value="{{ $comic->series }}" required>
+                    @error('title')
+                        <div class="alert alert-danger">
+                        {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
                     <label for="price" class="form-label">price</label>
-                    <input type="text" class="form-control @error('price') is-invalid @enderror" 
-                    id="price" name="price" placeholder="price"  value="{{ $comic->price }} {{ old('price') }}" required>
-
+                    <input type="text" class="form-control @error('price') is-invalid @enderror"id="price" name="price" placeholder="price"  value="{{ $comic->price }}" required>
+                    @error('title')
+                        <div class="alert alert-danger">
+                        {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
                     <label for="sale_date" class="form-label">sale date</label>
-                    <input type="date" class="form-control" id="sale_date" name="sale_date" placeholder="sale_date"  value="{{ $comic->sale_date }}" required>
+                    <input type="date" class="form-control @error('src') is-invalid @enderror" id="sale_date" name="sale_date" placeholder="sale_date"  value="{{ $comic->sale_date }}" required>
+                    @error('title')
+                        <div class="alert alert-danger">
+                        {{ $message }}
+                        </div>
+                    @enderror
                 </div>
  
                 <button type="submit">

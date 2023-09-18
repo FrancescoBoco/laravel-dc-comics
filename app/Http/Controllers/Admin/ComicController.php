@@ -82,9 +82,6 @@ class ComicController extends Controller
      */
     public function edit(string $id)
     {
-
-       
-
         $comic = Comic::findorfail($id);
         return view('admin.comics.edit', compact('comic'));
     }
@@ -95,18 +92,18 @@ class ComicController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'title'=>'max:128|string|required',
-            'src'=>'nullable|max:1024',
-            'series'=>'nullable|max:4024',
-            'price'=>'required|decimal:0,1',
-            'sale_date'=>'nullable|date',
+            'title'=>'max:128|required',
+            'src'=>'max:1024',
+            'series'=>'max:4024',
+            'price'=>'required|min:0.1',
+            'sale_date'=>'date',
         ],
         [
             'title.required'=> 'Il titolo è obbligatorio',
             'title.max'=> 'Il titolo può contenere al massimo 128 caratteri',
             'src.max'=> 'L\'SRC può contenere al massimo 1024 caratteri',
             'series.max'=> 'La sezione Series può contenere al massimo 4024 caratteri',
-            'price.decimal'=> 'Il prezzo deve essere uguale o superiore di 0,1€',
+            'price.min'=> 'Il prezzo deve essere uguale o superiore di 0,1€',
             'price.required'=> 'Il prezzo è obbligatorio',
             'sale_date.date'=> 'Deve essere una data',
             
@@ -117,13 +114,13 @@ class ComicController extends Controller
         $comic = Comic::findorfail($id);
 
         $fomrData = $request->all();
-        
         $comic->src = $fomrData['src'];
         $comic->title = $fomrData['title'];
         $comic->series = $fomrData['series'];
         $comic->price = $fomrData['price'];
         $comic->sale_date = $fomrData['sale_date'];
         $comic->save();
+
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
  
